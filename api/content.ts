@@ -436,6 +436,24 @@ function toItem(entry: LockupEntry, live: boolean): ContentItem {
 
 /** Newest broadcasts, live state included. */
 /**
+ * Titles that are a standing notice rather than a broadcast.
+ *
+ * She posts "･｡꙳✧「 WEEKLY SCHEDULE 」✧꙳-｡･" and YouTube schedules it like any
+ * other premiere, so it arrives carrying the same upcoming badge and no age as a
+ * real broadcast -- and would sit on the home page under "Mendatang" as though a
+ * stream were about to start.
+ *
+ * It is not one. The title says what it is: a notice posted once a week about
+ * when she is on. Treating it as an upcoming broadcast would mean the card
+ * spends most of the week naming something that is not an event, and a visitor
+ * reading it would be told to turn up for a title card.
+ *
+ * Matched on the words inside her own brackets rather than on the decoration, so
+ * the surrounding glyphs can change without this silently stopping to apply.
+ */
+const SCHEDULE_NOTICE = /weekly\s*schedule/i;
+
+/**
  * The channel's own scheduled broadcast, if it has one.
  *
  * Read off the same /streams response as the finished broadcasts, so it costs
@@ -448,6 +466,7 @@ function pickUpcoming(html: string): ContentItem | null {
     // one anyway, this badge matched on something other than a schedule, and
     // guessing at a future from it would be worse than showing nothing.
     if (entry.age) continue;
+    if (SCHEDULE_NOTICE.test(entry.title)) continue;
     return { ...toItem(entry, false), upcoming: true };
   }
   return null;

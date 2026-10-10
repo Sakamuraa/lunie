@@ -52,7 +52,7 @@ type State = {
 };
 
 /** When the snapshot's ages were measured, so the client can keep them honest. */
-const SNAPSHOT_AT = "2026-10-10T09:10:10.817Z";
+const SNAPSHOT_AT = "2026-10-10T09:45:01.999Z";
 
 /**
  * Bundled copies of the three lists, taken 2026-10-10.
@@ -86,7 +86,13 @@ const SNAPSHOT_VIDEOS: ContentItem[] = [
 ];
 
 const SNAPSHOT_CLIPS: ContentItem[] = [
-
+{ videoId: "N__p4a9nAIE", url: "https://www.youtube.com/watch?v=N__p4a9nAIE", title: "Suara imut @YourLuLunie 🤤", thumbnail: "https://i.ytimg.com/vi/N__p4a9nAIE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAyd2F5KS06OAHK-CzrDD9_oH8DxA", live: false, viewers: null, age: null, duration: "1.28", channel: "kgs him" },
+{ videoId: "qYRZtBnvpBg", url: "https://www.youtube.com/watch?v=qYRZtBnvpBg", title: "@YourLuLunie  cemburu karna @MoenD  dekat sama @Akari_", thumbnail: "https://i.ytimg.com/vi/qYRZtBnvpBg/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBL7c-QysXytx_QlL1fEcTx4zWFPw", live: false, viewers: null, age: null, duration: "2.44", channel: "kgs him" },
+{ videoId: "GMouBHcireQ", url: "https://www.youtube.com/watch?v=GMouBHcireQ", title: "Lunie ansos, kak MoenD~!【 Lunie 】", thumbnail: "https://i.ytimg.com/vi/GMouBHcireQ/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCYiZYckTk9WG6AjmNy_Hq0tGd1DQ", live: false, viewers: null, age: null, duration: "1.51", channel: "Nobeku Ch. [Archived]" },
+{ videoId: "kSSjq18h5Cg", url: "https://www.youtube.com/watch?v=kSSjq18h5Cg", title: "Katanya Kangen? (GWS) - @YourLuLunie", thumbnail: "https://i.ytimg.com/vi/kSSjq18h5Cg/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBN6-WwFFMWuIP37-fWTnfJN4Re9Q", live: false, viewers: null, age: null, duration: "1.34", channel: "Anz" },
+{ videoId: "XrtsOgx9NRw", url: "https://www.youtube.com/watch?v=XrtsOgx9NRw", title: "Pituber @YourLuLunie  satu ini Yabe sekali🛐🛐😋😋, Viewers cerminan dari Vtuber🤣【LUNIE】", thumbnail: "https://i.ytimg.com/vi/XrtsOgx9NRw/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBsIaiYgJzr_D_1cXzFRw014T_gIA", live: false, viewers: null, age: null, duration: "1.09", channel: "Vetra. 52Hz" },
+{ videoId: "wvl8diR06YY", url: "https://www.youtube.com/watch?v=wvl8diR06YY", title: "Livechat CSS Showcase | YourLuLunie", thumbnail: "https://i.ytimg.com/vi/wvl8diR06YY/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgBhAeAAtAFigIMCAAQARhPICUofzAP&rs=AOn4CLDYja8Kv4ZzLTHT8cBBumdrf-G4OA", live: false, viewers: null, age: null, duration: "0.27", channel: "Maru マル" },
+{ videoId: "3NRMk904lyc", url: "https://www.youtube.com/watch?v=3NRMk904lyc", title: "Kelakuan dedek Riku (Lunie) || @YourLuLunie", thumbnail: "https://i.ytimg.com/vi/3NRMk904lyc/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgBzgWAAoAKigIMCAAQARhJIEQoZTAP&rs=AOn4CLBMrTII5caV4omLHmrGazDoupb9AA", live: false, viewers: null, age: null, duration: "3.05", channel: "カダフィ VClips" },
 ];
 
 /** Ages as measured at capture time, in seconds. */
@@ -107,6 +113,13 @@ const SNAPSHOT_AGES: Record<string, number> = {
   "4PDawD4_-Q8": 31536000,
   zTr7lHSIwos: 63072000,
   "069M_Obij84": 94608000,
+  N__p4a9nAIE: 31536000,
+  qYRZtBnvpBg: 63072000,
+  GMouBHcireQ: 31536000,
+  kSSjq18h5Cg: 31536000,
+  XrtsOgx9NRw: 63072000,
+  wvl8diR06YY: 63072000,
+  "3NRMk904lyc": 63072000,
 };
 
 const SECOND = 1000;

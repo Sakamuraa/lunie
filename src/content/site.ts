@@ -153,12 +153,17 @@ export const hashtags = [
  * The "kind" column is a plain reading of what the title is about, not a claim
  * from the creator.
  *
- * Read off the titles rather than assumed: "WEEKLY SCHEDULE" is bracketed the way
- * she brackets a standing appointment, four of her videos are covers, two of them
- * are debut trailers, and the pre-order streams recur around each con.
+ * Read off the titles rather than assumed: four of her videos are covers, two of
+ * them are debut trailers, and the pre-order streams recur around each con.
+ *
+ * "WEEKLY SCHEDULE" is deliberately not here. She posts one every week and it is
+ * bracketed the same way a title is, but it is a standing notice about when she
+ * is on, not something she runs -- listing it beside the covers and the trailers
+ * would put four different kinds of thing in one column. It is also kept out of
+ * the upcoming card, for the same reason: a recurring notice is not a broadcast
+ * that is about to start. See SCHEDULE_NOTICE in api/content.ts.
  */
 export const series = [
-  { name: "WEEKLY SCHEDULE", kind: "Jadwal" },
   { name: "ASMR", kind: "ASMR" },
   { name: "Cover by Lunie", kind: "Musik" },
   { name: "Debut Trailer", kind: "Trailer" },

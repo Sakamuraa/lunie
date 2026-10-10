@@ -109,19 +109,23 @@ export function Profile({ detail = false }: { detail?: boolean } = {}) {
               Facts only, as a grid rather than a paragraph. No description of her
               appearance and no guesses about what she likes: neither is something
               a source states.
+
+              Two cells, not three. The template shipped a third reading "Live 2D",
+              which is true of the creator it was written for and is not a claim
+              anything supports here -- "Live 2D", "rigging" and "rigged" appear
+              nowhere in her bio, her posts, or her video descriptions, and the only
+              "runtime" on the channel page is YouTube's own ShadyCSS flag. The one
+              thing she does say about herself is "#vtuber", but that is a category
+              rather than a format, and putting it where a rig would go would imply
+              a rig was considered and withheld. So the slot is gone instead of
+              filled with something that would have to be hedged.
             */}
-            <StaggerGroup className="grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-3">
+            <StaggerGroup className="grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2">
               <StaggerItem className="bg-surface p-5">
                 <p className="text-xs font-medium uppercase tracking-[0.12em] text-fg-subtle">
                   Bahasa
                 </p>
                 <p className="mt-2 text-sm leading-snug text-fg">Indonesia dan Inggris</p>
-              </StaggerItem>
-              <StaggerItem className="bg-surface p-5">
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-fg-subtle">
-                  Format
-                </p>
-                <p className="mt-2 text-sm leading-snug text-fg">Live 2D</p>
               </StaggerItem>
               <StaggerItem className="bg-surface p-5">
                 <p className="text-xs font-medium uppercase tracking-[0.12em] text-fg-subtle">

@@ -58,8 +58,13 @@ besar-kecil, jadi `#CF23` dan `#cf23` adalah tag yang sama baginya, tapi bukan
 string yang sama, dan memilih salah satu keputusan yang dibuat di sini.
 
 **Tidak ada klaim rig.** Tidak ada satu pun dari bio, 20 post, atau deskripsi
-video yang menyebut Live 2D atau runtime, jadi `Format` di halaman profil tidak
-mengisi kolom itu.
+video yang menyebut Live 2D, rigging, atau runtime, jadi kotak `Format` di
+halaman profil dihapus seluruhnya, bukan diisi dengan tebakan. Satu-satunya
+`runtime` di HTML kanalnya adalah flag `ShadyCSS.disableRuntime` milik YouTube.
+Yang pernah dia tulis tentang dirinya sendiri cuma `#vtuber`, dan itu kategori,
+bukan format. Template aslinya membawa tulisan "Live 2D" milik kreator yang
+mulai dari template itu; string itu ikut terbawa sampai sini dan tidak ada
+bukti apa pun untuk meninggalkannya di halaman publik.
 
 X hanya bisa dibaca lewat `og:` meta tag, jadi yang terambil adalah nama,
 handle, bio, dan avatar. Jumlah pengikut tidak bisa diambil tanpa login, jadi
