@@ -27,7 +27,7 @@ export type Fanart = {
 
 type Payload = {
   reason?: string;
-  /** Null when this creator has no art tag to search, which the page explains. */
+  /** Null only if the endpoint reports the creator has no art tag to search. */
   hashtag?: string | null;
   searchUrl?: string;
   fanart?: Fanart[];
@@ -46,8 +46,7 @@ type State = {
    */
   hashtag: string | null;
   /** Where to send someone who wants the whole stream rather than this page. */
-  searchUrl: string;
-  /**
+  searchUrl: string;  /**
    * Opaque continuation. Null once the archive is exhausted, which is the only
    * honest way to hide the button.
    */
@@ -67,6 +66,21 @@ type State = {
 
 /** Kept in step with api/fanart.ts so the two cannot disagree on page size. */
 export const FANART_LIMIT = 48;
+
+/**
+ * The tag the wall is built on, and the search it links to.
+ *
+ * Seeded here rather than left null until the first response lands, because the
+ * page prints this tag in its opening line. Starting null made the first paint
+ * read "hashtag fan art" and then swap to the real tag a moment later, and under
+ * the old no-tag route it printed a whole paragraph explaining that no tag
+ * existed before correcting itself. Both were the hook describing uncertainty the
+ * visitor does not have.
+ *
+ * Kept in step with HASHTAG in api/fanart.ts -- if that tag moves, this moves.
+ */
+const FANART_TAG = "#ArtLunie";
+const FANART_SEARCH = `https://x.com/search?q=${encodeURIComponent(`#ArtLunie`)}&src=typed_query&f=live`;
 
 /**
  * Ceiling on what the page will hold, across every page loaded.
@@ -120,8 +134,8 @@ export function useFanart(): State & { loadMore: () => void } {
     reason: "loading",
     // Matches what api/fanart.ts answers with before any response lands, so the
     // first paint and the response agree and the page does not flip.
-    hashtag: null,
-    searchUrl: "https://x.com/search?q=from%3AYourLuLunie&f=live",
+    hashtag: FANART_TAG,
+    searchUrl: FANART_SEARCH,
     nextCursor: null,
     loadingMore: false,
     initialCount: 0,
@@ -152,9 +166,10 @@ export function useFanart(): State & { loadMore: () => void } {
         setState((prev) => ({
           fanart: list.length > 0 ? list : prev.fanart,
           reason: list.length > 0 ? "live" : "unavailable",
-          // `?? prev` rather than `|| prev`: null is a real answer here and means
-          // "this creator has no tag", which is not the same as "not told yet".
-          hashtag: payload.hashtag ?? prev.hashtag,
+          // `!== undefined` rather than `??`: null is a real answer meaning "no tag
+          // to search", and `??` would let the seeded value swallow it and leave the
+          // page advertising a tag it could not load. Only an absent field falls back.
+          hashtag: payload.hashtag !== undefined ? payload.hashtag : prev.hashtag,
           searchUrl: payload.searchUrl ?? prev.searchUrl,
           nextCursor: payload.nextCursor ?? null,
           loadingMore: false,

@@ -36,25 +36,6 @@ export function Fanart() {
         </p>
       </Reveal>
 
-      {/*
-        `hashtag` decides which sentence is shown. When the endpoint reports no
-        tag, the page says why rather than implying one exists -- her bio and her
-        posts carry none, and the tags she does use are convention tags that
-        would fill this wall with other people's merchandise.
-      */}
-      {!hashtag && (
-        <Reveal amount={0.2}>
-          <p className="mt-6 max-w-[52ch] rounded-card border border-line bg-surface px-5 py-4 text-sm leading-relaxed text-fg-muted">
-            Lunie belum pakai hashtag khusus untuk fan art. Tag yang ia pakai
-            sekarang — <span className="font-mono text-fg">#CF23</span>,{" "}
-            <span className="font-mono text-fg">#comifuro</span> — adalah tag event
-            dan pasar furo, jadi pencarian global atas tag itu akan mengembalikan
-            karya kreator lain. Bagian ini sengaja dikosongkan daripada diisi dengan
-            karya yang bukan miliknya.
-          </p>
-        </Reveal>
-      )}
-
         {fanart.length > 0 ? (
           <>
             <StaggerGroup

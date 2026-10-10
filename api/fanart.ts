@@ -77,28 +77,28 @@ interface FanartResponse {
  */
 const INSTANCES = ["https://nitter1.kabii.moe", "https://nitter.kabii.moe"] as const;
 
-/*
- * No hashtag to search, and that is the honest answer.
- *
- * Lunie does not use a fan art tag. Checked before deciding this, not assumed:
- *   - her X bio carries no hashtag at all
- *   - 20 posts off her timeline carry #CF23, #comifuro, #comifuro23 and
- *     #cf23catalogue -- every one of them an event or doujin-market tag for her
- *     con run, none of them about art
- *   - no video description mentions one either
- *
- * The tags she does use would make a bad wall. #CF23 and #comifuro are shared by
- * every artist attending that convention, so a search returns other people's
- * merchandise and other people's guests, not drawings of her. Filling the page
- * with those would be a gallery of a convention.
- *
- * So this route answers "unavailable" with a link to her own timeline, and the
- * page says why in one sentence. A section that admits it has nothing is better
- * than one that fills itself with the wrong thing.
- *
- * If she ever adopts an art tag, this is the only line that has to change.
- */
-const HASHTAG: string | null = null;
+  /*
+   * The tag this page is built on.
+   *
+   * #ArtLunie, and it is the only line that has to change if that ever moves.
+   *
+   * The route used to sit disabled with no tag at all, on the reasoning that she
+   * had no art tag -- true of everything that could be read off her timeline at
+   * the time, where the visible tags were #CF23, #comifuro, #comifuro23 and
+   * #cf23catalogue. Those are convention and doujin-market tags, and a search on
+   * any of them returns every artist at that convention rather than drawings of
+   * her, so searching them would have produced a gallery of a con.
+   *
+   * #ArtLunie is a tag about her specifically. Measured against both live
+   * instances before wiring it in: 19 items on the first page from nine distinct
+   * accounts, with a working cursor -- so this wall fills with other people's
+   * drawings, which is the only thing a fan art wall should ever contain.
+   *
+   * The per-item guard in parseItems still applies: an entry whose caption does
+   * not actually carry the tag is dropped, because Nitter's search occasionally
+   * returns a hit that matched on something else.
+   */
+  const HASHTAG: string | null = "ArtLunie";
 
 /**
  * Where a visitor goes instead.

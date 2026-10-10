@@ -117,35 +117,30 @@ export const ROUTES = [
 export type Route = (typeof ROUTES)[number];
 
 /**
- * Hashtags, every one read off something she wrote.
+ * The only two tags shown on this site.
  *
- * Provenance per tag, because the interesting part here is that her bio has none:
+ * Not a list of everything she has ever used. #CF23, #comifuro, #comifuro23 and
+ * #cf23catalogue are convention and doujin-market tags for her con run;
+ * #UtaindoRelay, #TOBEHEROX, #LonelyUniverse and #EvenThoughIHadLovedYou are
+ * relay and cover event tags shared with every other singer taking part. They
+ * were all read off real posts, and all of them describe an event rather than
+ * her, so listing them here would have been the site's own claim rather than
+ * hers.
  *
- *   from X posts        #CF23  #cf23catalogue  #comifuro  #comifuro23
- *   from video titles   #UtaindoRelay  #TOBEHEROX  #LonelyUniverse
- *                       #EvenThoughIHadLovedYou
+ * These two are the ones that point back at her: one for her own posts, one for
+ * art made about her. #ArtLunie also drives /fanart -- see HASHTAG in
+ * api/fanart.ts.
  *
- * The four X tags are her event run: CF23 is the con she is announcing, and the
- * other three are the doujin-market tags that go with it. The four YouTube tags
- * are what her covers carry. Nothing was invented to fill the list, and the page
- * says so rather than implying a fixed set exists.
+ * Both were checked on her own posts rather than taken on trust: #YourLuLunie
+ * appears in her Shorts titles, #ArtLunie returns art from other accounts.
  *
- * Case is kept as she wrote it. X search is case-insensitive so #CF23 and #cf23
- * are the same tag to her, but they are not the same string, and picking one over
- * the other would be a decision made here rather than by her.
- *
- * A "#m" also turned up in the timeline scrape and is deliberately absent: it is
- * the anchor on a Nitter permalink, not a tag she uses.
+ * The tags above still show up where they genuinely belong -- inside video titles
+ * in the content snapshot. Those are YouTube's strings, not a list this site is
+ * making.
  */
 export const hashtags = [
-  { tag: "#CF23", use: "Event" },
-  { tag: "#comifuro", use: "Furo" },
-  { tag: "#comifuro23", use: "Furo" },
-  { tag: "#cf23catalogue", use: "Catalogue" },
-  { tag: "#UtaindoRelay", use: "Cover relay" },
-  { tag: "#TOBEHEROX", use: "Cover" },
-  { tag: "#LonelyUniverse", use: "Cover" },
-  { tag: "#EvenThoughIHadLovedYou", use: "Cover" },
+  { tag: "#YourLuLunie", use: "Konten Lunie" },
+  { tag: "#ArtLunie", use: "Fan art" },
 ] as const;
 
 /**

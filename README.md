@@ -36,8 +36,15 @@ ditarik dari kanal aslinya, langsung saat build server:
 | Seri yang dijalankan | Dihitung dari judul, bukan ditebak |
 | Tautan sosial | Blok "Social Media" di deskripsi video miliknya sendiri |
 
-**Hashtag tidak diambil dari bio, karena bio-nya tidak punya.** Semua tag di
-`site.ts` dibaca dari post atau deskripsi yang ia tulis sendiri:
+**Hanya dua hashtag yang ditampilkan, dan keduanya milik dia sendiri:**
+
+```
+#YourLuLunie   konten Lunie
+#ArtLunie      fan art
+```
+
+Situs ini sengaja tidak menampilkan tag lain, meskipun hampir semuanya memang
+terbaca dari post atau judul yang ia tulis sendiri:
 
 ```
 dari post X        #CF23  #comifuro  #comifuro23  #cf23catalogue
@@ -45,17 +52,22 @@ dari judul video   #UtaindoRelay  #TOBEHEROX  #LonelyUniverse
                    #EvenThoughIHadLovedYou
 ```
 
-Empat tag X adalah run event-nya: CF23 adalah kon yang sedang diumumkan, dan
-tiga lainnya tag pasar furo yang menyertainya. Empat tag YouTube ada di cover
-yang ia buat.
+Semuanya itu nama event, bukan nama dia: CF23 adalah kon yang diumumkan, tiga
+tag lain adalah tag pasar furo yang menyertainya, dan keempat tag YouTube adalah
+nama relay atau cover yang dipakai bersama semua penyanyi lain yang ikut. Semuanya
+terbaca dari sumber nyata, tapi menampilkannya sebagai "hashtag Lunie" di halaman
+ini akan jadi klaim situs, bukan klaim dia.
+
+`#YourLuLunie` dan `#ArtLunie` yang berbeda sifatnya: keduanya menunjuk balik ke
+dia, bukan ke acara. Artis yang membuat fan art menandai karyanya dengan keduanya
+sekaligus — `#ArtLunie #YourLuLunie`.
+
+Tag yang dibuang tetap muncul di tempat yang memang benar, di dalam judul video
+pada snapshot konten. Itu string milik YouTube, bukan daftar yang dibuat situs ini.
 
 Satu hal yang **sengaja dibuang**: hasil scrape timeline juga memunculkan
 `#m`, dan itu anchor dari permalink Nitter
 (`/status/2097535611146269124#m`), bukan tag yang ia pakai.
-
-Case disimpan seperti yang ia tulis. Pencarian X tidak membedakan huruf
-besar-kecil, jadi `#CF23` dan `#cf23` adalah tag yang sama baginya, tapi bukan
-string yang sama, dan memilih salah satu keputusan yang dibuat di sini.
 
 **Tidak ada klaim rig.** Tidak ada satu pun dari bio, 20 post, atau deskripsi
 video yang menyebut Live 2D, rigging, atau runtime, jadi kotak `Format` di
@@ -73,7 +85,16 @@ tidak ditampilkan.
 ## Konten: tiga sumber
 
 Semua daftar diambil server-side supaya halaman tetap statis di sisi klien.
-`api/content.ts` adalah satu-satunya serverless function di repo.
+Ada **empat** serverless function di `api/`, bukan satu:
+
+| Function | Untuk | Sumber |
+|---|---|---|
+| `content.ts` | Stream, video, clip, broadcast yang akan datang | YouTube HTML |
+| `chat.ts` | Panel chat di halaman broadcast | YouTube HTML |
+| `tweets.ts` | Postingan X | Nitter RSS |
+| `fanart.ts` | Fan art `#ArtLunie` | Nitter HTML |
+
+Semuanya tanpa env var dan tanpa database.
 
 ```
 GET /api/content
@@ -153,6 +174,7 @@ sendiri.
 | `/konten/video` | Upload yang bukan broadcast |
 | `/konten/clips` | Clip dari kanal lain yang menyebut dia |
 | `/tweets` | Postingan X, terbaru lebih dulu |
+| `/fanart` | Fan art dari `#ArtLunie`, karya kreator lain |
 | `/channel` | Tautan kanal |
 
 Tabel rute ada di `src/content/site.ts`, bukan di App, jadi nav dan router
@@ -412,7 +434,7 @@ loaded, bukan di jalur kritis.
 
 ## Deploy
 
-Build static ke `dist/`, plus satu serverless function di `api/`. Tanpa env
+Build static ke `dist/`, plus empat serverless function di `api/`. Tanpa env
 var, tanpa database.
 
 **Vercel** - import `Sakamuraa/lunie`, Vite terdeteksi otomatis.
