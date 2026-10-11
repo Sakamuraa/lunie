@@ -59,9 +59,19 @@
   --ink: #221c3e;
   --ink-hover: #2e2850;
   /* Text placed ON an indigo fill. Indigo is dark in both themes, so this stays
-     light in both; deriving it from --fg would flip it in the light theme and
-     drop that pairing to 1.4:1. */
+light in both; deriving it from --fg would flip it in the light theme and
+      drop that pairing to 1.4:1. */
   --on-indigo: #f2eefc;
+
+  /* Warm fills for the chat badges and the avatar placeholder.
+     StreamPage has used peach and cocoa since this template was first written,
+     and neither token was ever defined here -- those badges have been rendering
+     with no background at all. Derived from the brand's warm side so they sit in
+     the same family rather than importing a colour that belongs to nothing else. */
+  --peach: #8f5526;
+  --peach-soft: #f0dcc8;
+  --cocoa: #5e3413;
+  --cocoa-soft: #f6e7d8;
 }
 
 [data-theme="dark"] {
@@ -105,6 +115,15 @@
   --ink: #f2eefc;
   --ink-hover: #dcd3f4;
   --on-indigo: #f2eefc;
+
+  /* Lighter here than in light mode. The light values are dark enough to carry
+     dark text, which on this ground would be invisible; against a near-black
+     background the same fills need to go the other way. Both measured against
+     their own surface rather than chosen by eye. */
+  --peach: #e8b487;
+  --peach-soft: #3a2c26;
+  --cocoa: #f0d0a6;
+  --cocoa-soft: #453026;
 }
 
 @theme inline {
@@ -128,6 +147,10 @@
   --color-ink: var(--ink);
   --color-ink-hover: var(--ink-hover);
   --color-on-indigo: var(--on-indigo);
+  --color-peach: var(--peach);
+  --color-peach-soft: var(--peach-soft);
+  --color-cocoa: var(--cocoa);
+  --color-cocoa-soft: var(--cocoa-soft);
 
   /* Cormorant Garamond for display: a high-contrast old-style with very thin
      hairlines, which is why it is display-only. Her own styling leans on thin

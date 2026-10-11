@@ -78,7 +78,7 @@ export function Profile({ detail = false }: { detail?: boolean } = {}) {
             )}
 
             <figure className="mt-8 border-l-2 border-indigo pl-5">
-              <CrownSimple size={22} className="text-shadow" aria-hidden="true" />
+              <CrownSimple size={22} className="text-fg-subtle" aria-hidden="true" />
               <blockquote className="mt-3 font-display text-xl leading-relaxed">
                 {site.bio}
               </blockquote>
@@ -153,7 +153,7 @@ export function Profile({ detail = false }: { detail?: boolean } = {}) {
           <div className="grid gap-14 md:grid-cols-12 md:gap-12">
             <div className="md:col-span-5">
               <h3 className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight">
-                <PersonSimple size={22} className="text-shadow" aria-hidden="true" />
+                <PersonSimple size={22} className="text-fg-subtle" aria-hidden="true" />
                 Credit karakter
               </h3>
               <dl className="mt-6">
@@ -171,7 +171,7 @@ export function Profile({ detail = false }: { detail?: boolean } = {}) {
 
             <div className="md:col-span-6 md:col-start-7">
               <h3 className="flex items-center gap-2.5 text-2xl font-semibold tracking-tight">
-                <Palette size={22} className="text-shadow" aria-hidden="true" />
+                <Palette size={22} className="text-fg-subtle" aria-hidden="true" />
                 Seri yang dijalankan
               </h3>
               {/* Single column on every width. Two columns overflowed the shell
